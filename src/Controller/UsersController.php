@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
 
 class UsersController extends FOSRestController
 {
@@ -42,9 +43,9 @@ class UsersController extends FOSRestController
         return $this->view($user);
     }
 
-    public function putUserAction($id)
+    public function putUserAction(Request $request, int $id)
     {
-
+        // $request->get('firstname')
     }
 
     public function deleteUserAction($id)
