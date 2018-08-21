@@ -1,4 +1,4 @@
-# Read the documentation: https://symfony.com/doc/master/bundles/FOSRestBundle/index.html
+# app/config/config.yml
 fos_rest:
     view:
         view_response_listener: force
@@ -6,6 +6,7 @@ fos_rest:
         default_format: json
     body_converter:
         enabled: true
+        validate: true
     param_fetcher_listener:  true
 #    allowed_methods_listener:  true
 #    routing_loader: true

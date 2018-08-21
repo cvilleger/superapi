@@ -58,16 +58,10 @@ class User implements UserInterface
      */
     private $apiKey;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="user")
-     */
-    private $articles;
-
     public function __construct()
     {
         $this->roles = array('ROLE_USER');
         $this->apiKey = uniqid('', true);
-        $this->articles = new ArrayCollection();
     }
 
     public function getId()
@@ -164,36 +158,5 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
-    }
-
-    /**
-     * @return Collection|Article[]
-     */
-    public function getArticles(): Collection
-    {
-        return $this->articles;
-    }
-
-    public function addArticle(Article $article): self
-    {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
-            $article->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArticle(Article $article): self
-    {
-        if ($this->articles->contains($article)) {
-            $this->articles->removeElement($article);
-            // set the owning side to null (unless already changed)
-            if ($article->getUser() === $this) {
-                $article->setUser(null);
-            }
-        }
-
-        return $this;
     }
 }
