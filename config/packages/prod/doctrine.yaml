@@ -1,8 +1,4 @@
 doctrine:
-    dbal:
-        driver: 'pdo_pgsql'
-        server_version: '10.4'
-        charset: utf8
     orm:
         metadata_cache_driver:
             type: service
